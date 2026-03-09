@@ -1,0 +1,25 @@
+{
+  "name": "hash-module-uni",
+  "version": "1.0.0",
+  "description": "Function for auth password check",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlinaSHforwork/hash-module-uni.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlinaSHforwork/hash-module-uni/issues"
+  },
+  "homepage": "https://github.com/AlinaSHforwork/hash-module-uni#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.3.1"
+  }
+}
