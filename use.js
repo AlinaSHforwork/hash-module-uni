@@ -1,13 +1,23 @@
 const fs = require('fs').promises;
-const AuthHash = require('./index.js');
+const AuthHash = require('./bcryptHash.js');
+const HashModule = require('./scryptHash.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PEPPER = process.env.PEPPER || 'default_pepper_for_demo'; 
 const FILE_PATH = './password.txt';
 
-const auth = new AuthHash(PEPPER);
-    
+function whichHash() {
+    const arg = process.argv[2];
+    if (arg === 'scrypt') {
+        return new HashModule(PEPPER);
+    } else {
+        return new AuthHash(PEPPER);
+    }
+}
+
+const auth = whichHash();
+
 function isValid(pwd) {
     // (?=.*[A-Z]) - minimum one uppercase letter
     // (?=.*[a-z]) - minimum one lowercase letter
@@ -18,7 +28,7 @@ function isValid(pwd) {
 }
 
 async function start() {
-    const inputPassword = process.argv[2];
+    const inputPassword = process.argv[3];
 
     if (!inputPassword) {
         return console.log("Write: node use.js 'Password...' ");
