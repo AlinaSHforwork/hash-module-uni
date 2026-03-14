@@ -17,25 +17,18 @@ You can switch between bcrypt (Industry Standard) and scrypt (Memory-Hard) via C
 npm install 
 ```
 
-### 2. Put pepper in `.env` :
+### 2. Put pepper and DATABASE_URL in `.env` :
 
 ```.env
+DATABASE_URL=
 PEPPER=
 ```
 
-generate with: 
+generate PEPPER with: 
 `node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`
 
 ### 3. Usage
 
-To **save** and **verify** password :
-
 ```bash
-# Save/Verify using scrypt
-node use.js scrypt "Complex_Password_123!@#456"
-```
-
-```bash
-# Save/Verify using bcrypt
-node use.js bcrypt "Complex_Password_123!@#456"
+npm start
 ```
